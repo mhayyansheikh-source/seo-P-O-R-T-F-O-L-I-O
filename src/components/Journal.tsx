@@ -1,4 +1,9 @@
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const SERVICES = [
   { 
@@ -19,42 +24,69 @@ const SERVICES = [
 ];
 
 export function Journal() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current || !scrollContainerRef.current) return;
+
+    // Calculate how far to scroll horizontally
+    const scrollWidth = scrollContainerRef.current.scrollWidth - window.innerWidth;
+
+    const ctx = gsap.context(() => {
+      gsap.to(scrollContainerRef.current, {
+        x: -scrollWidth,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: `+=${scrollWidth}`,
+          pin: true,
+          scrub: 1,
+        }
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="services" className="bg-canvas py-24 md:py-32">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-        
-        {/* Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6"
+    <section id="services" ref={sectionRef} className="bg-canvas overflow-hidden">
+      <div className="h-screen flex flex-col justify-center py-[clamp(4rem,10vw,8rem)] relative">
+        <div className="max-w-[1200px] w-full mx-auto px-6 md:px-12 mb-12 flex-shrink-0">
+          
+          {/* Header */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6"
+          >
+            <div>
+              <h2 className="text-display-lg text-ink mb-4">
+                Our Specialized Services
+              </h2>
+              <p className="text-body-md text-muted max-w-sm">
+                Tailored digital solutions designed to dominate the 2026 search landscape.
+              </p>
+            </div>
+
+            <a href="#packages" className="btn-secondary">
+              View Premium Gigs
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Services Horizontal Scroll Grid */}
+        <div 
+          ref={scrollContainerRef}
+          className="flex gap-6 px-6 md:px-12 w-max items-stretch"
         >
-          <div>
-            <h2 className="text-display-lg text-ink mb-4">
-              Our Specialized Services
-            </h2>
-            <p className="text-body-md text-muted max-w-sm">
-              Tailored digital solutions designed to dominate the 2026 search landscape.
-            </p>
-          </div>
-
-          <a href="#packages" className="btn-secondary">
-            View Premium Gigs
-          </a>
-        </motion.div>
-
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {SERVICES.map((service, i) => (
-            <motion.div 
+            <div 
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="feature-card flex flex-col gap-6 group hover:bg-surface-dark-elevated transition-colors duration-300"
+              className="feature-card flex flex-col gap-6 group hover:bg-surface-dark-elevated transition-colors duration-300 w-[300px] md:w-[400px] flex-shrink-0"
             >
               <div className="w-12 h-12 rounded-full bg-hairline flex items-center justify-center text-2xl group-hover:bg-surface-dark transition-colors">
                 {service.icon}
@@ -73,7 +105,7 @@ export function Journal() {
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

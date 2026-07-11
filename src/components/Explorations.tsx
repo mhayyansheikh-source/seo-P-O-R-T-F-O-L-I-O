@@ -67,7 +67,7 @@ export function Explorations() {
         
         {/* Layer 1: Pinned Center */}
         <div ref={pinnedRef} className="h-screen w-full flex items-center justify-center z-10 pointer-events-none">
-          <div className="flex flex-col items-center text-center px-4 bg-canvas/80 backdrop-blur-md py-12 px-8 rounded-md pointer-events-auto border border-hairline/20 shadow-md">
+          <div className="flex flex-col items-center text-center px-4 bg-canvas/80 backdrop-blur-md py-12 px-8 rounded-sm pointer-events-auto border border-hairline/20 shadow-md">
             
             <h2 className="text-display-lg text-ink mb-6">
               Premium Packages
@@ -97,7 +97,7 @@ export function Explorations() {
                   <div 
                     key={i} 
                     onClick={() => setSelectedImg(img)}
-                    className="w-[200px] md:w-[320px] aspect-square bg-surface-card border border-hairline rounded-md overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-500 shadow-xl"
+                    className="w-[200px] md:w-[320px] aspect-square bg-surface-card border border-hairline rounded-sm overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-500 shadow-xl"
                     style={{ transform: `rotate(${i % 2 === 0 ? -6 : 4}deg)` }}
                   >
                     <Image src={img} alt="Exploration" className="w-full h-full object-cover transition-all duration-500" containerClassName="w-full h-full" />
@@ -112,7 +112,7 @@ export function Explorations() {
                   <div 
                     key={i} 
                     onClick={() => setSelectedImg(img)}
-                    className="w-[200px] md:w-[320px] aspect-square bg-surface-card border border-hairline rounded-md overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-500 shadow-xl"
+                    className="w-[200px] md:w-[320px] aspect-square bg-surface-card border border-hairline rounded-sm overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-500 shadow-xl"
                     style={{ transform: `rotate(${i % 2 === 0 ? 5 : -3}deg)` }}
                   >
                     <Image src={img} alt="Exploration" className="w-full h-full object-cover transition-all duration-500" containerClassName="w-full h-full" />
@@ -130,7 +130,7 @@ export function Explorations() {
           className="fixed inset-0 z-[99999] bg-ink/90 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer"
           onClick={() => setSelectedImg(null)}
         >
-          <img src={selectedImg} alt="Lightbox" className="max-w-full max-h-[90vh] object-contain rounded-md" />
+          <img src={selectedImg} alt="Lightbox" className="max-w-full max-h-[90vh] object-contain rounded-sm" />
         </div>
       )}
     </>

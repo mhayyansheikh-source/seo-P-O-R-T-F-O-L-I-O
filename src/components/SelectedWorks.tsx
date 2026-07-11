@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Image } from './Image';
 
 type Category = 'All' | 'E-Commerce & Brands' | 'Healthcare & Clinics' | 'Corporate & B2B Services' | 'Lifestyle & Hospitality';
@@ -37,6 +37,58 @@ const PROJECTS = [
 
 const CATEGORIES: Category[] = ['All', 'E-Commerce & Brands', 'Healthcare & Clinics', 'Corporate & B2B Services', 'Lifestyle & Hospitality'];
 
+function ProjectCard({ project, index }: { project: any, index: number }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"]
+  });
+
+  const isDarkCard = index % 3 === 1; // Alternating rhythm
+  const isEvenColumn = index % 2 === 1; // 0-indexed, so 1, 3, 5 are the "even" visual columns
+
+  // Parallax effect: even columns scroll slightly slower, odd scroll faster
+  const y = useTransform(scrollYProgress, [0, 1], [0, isEvenColumn ? -150 : -50]);
+
+  const cardClass = isDarkCard ? "product-mockup-card-dark" : "feature-card";
+  const titleClass = isDarkCard ? "text-on-dark" : "text-ink";
+  const descClass = isDarkCard ? "text-on-dark-soft" : "text-muted";
+  const btnClass = isDarkCard ? "btn-secondary-on-dark" : "btn-secondary";
+
+  return (
+    <motion.div
+      ref={cardRef}
+      layout
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.4 }}
+      style={{ y }}
+      className={`${cardClass} flex flex-col gap-6 ${isEvenColumn ? 'md:mt-32' : 'md:mt-0'}`}
+    >
+      <div className="relative w-full aspect-[16/10] overflow-hidden rounded-sm border border-hairline/20 bg-surface-dark-elevated">
+        <Image 
+          src={project.image} 
+          alt={project.name} 
+          containerClassName="w-full h-full absolute inset-0"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      
+      <div>
+        <h3 className={`text-[18px] font-medium ${titleClass} mb-2`}>{project.name}</h3>
+        <p className={`text-[14px] ${descClass}`}>{project.desc}</p>
+      </div>
+
+      <div className="mt-auto pt-4">
+        <a href={project.url} target="_blank" rel="noopener noreferrer" className={btnClass}>
+          Visit Website
+        </a>
+      </div>
+    </motion.div>
+  );
+}
+
 export function SelectedWorks() {
   const [activeCategory, setActiveCategory] = useState<Category>('All');
 
@@ -45,7 +97,7 @@ export function SelectedWorks() {
     : PROJECTS.filter(p => p.category === activeCategory);
 
   return (
-    <section id="work" className="bg-canvas py-[96px]">
+    <section id="work" className="bg-canvas py-[clamp(4rem,10vw,8rem)]">
       <div className="max-w-[1200px] mx-auto px-6 md:px-12">
         
         {/* Header */}
@@ -70,7 +122,7 @@ export function SelectedWorks() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-3 py-2 rounded-md text-[14px] font-medium transition-all duration-300 ${
+                  className={`px-4 py-2 rounded-full text-[14px] font-medium transition-all duration-300 ${
                     activeCategory === cat 
                       ? "bg-surface-card text-ink" 
                       : "bg-transparent text-muted hover:text-ink hover:bg-surface-card/50"
@@ -86,45 +138,9 @@ export function SelectedWorks() {
         {/* Works Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, i) => {
-              const isDarkCard = i % 3 === 1; // Alternating rhythm
-              const cardClass = isDarkCard ? "product-mockup-card-dark" : "feature-card";
-              const titleClass = isDarkCard ? "text-on-dark" : "text-ink";
-              const descClass = isDarkCard ? "text-on-dark-soft" : "text-muted";
-              const btnClass = isDarkCard ? "btn-secondary-on-dark" : "btn-secondary";
-
-              return (
-                <motion.div
-                  key={project.name}
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4 }}
-                  className={`${cardClass} flex flex-col gap-6`}
-                >
-                  <div className="relative w-full aspect-[16/10] overflow-hidden rounded-md border border-hairline/20 bg-surface-dark-elevated">
-                    <Image 
-                      src={project.image} 
-                      alt={project.name} 
-                      containerClassName="w-full h-full absolute inset-0"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  
-                  <div>
-                    <h3 className={`text-[18px] font-medium ${titleClass} mb-2`}>{project.name}</h3>
-                    <p className={`text-[14px] ${descClass}`}>{project.desc}</p>
-                  </div>
-
-                  <div className="mt-auto pt-4">
-                    <a href={project.url} target="_blank" rel="noopener noreferrer" className={btnClass}>
-                      Visit Website
-                    </a>
-                  </div>
-                </motion.div>
-              );
-            })}
+            {filteredProjects.map((project, i) => (
+              <ProjectCard key={project.name} project={project} index={i} />
+            ))}
           </AnimatePresence>
         </div>
 

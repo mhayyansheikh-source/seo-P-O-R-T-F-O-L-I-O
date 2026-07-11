@@ -1,4 +1,27 @@
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
+
+function Counter({ from = 0, to, duration = 2, decimals = 0 }: { from?: number, to: number, duration?: number, decimals?: number }) {
+  const nodeRef = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(nodeRef, { once: true, margin: "-100px" });
+  
+  useEffect(() => {
+    if (isInView && nodeRef.current) {
+      const controls = animate(from, to, {
+        duration,
+        ease: "easeOut",
+        onUpdate(value) {
+          if (nodeRef.current) {
+            nodeRef.current.textContent = value.toFixed(decimals).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          }
+        }
+      });
+      return () => controls.stop();
+    }
+  }, [from, to, duration, decimals, isInView]);
+
+  return <span ref={nodeRef} className="text-display-lg text-ink">{from}</span>;
+}
 
 export function Stats() {
   return (
@@ -8,9 +31,7 @@ export function Stats() {
           {/* Stat 1 */}
           <div className="flex flex-col items-center">
             <div className="flex items-baseline gap-2 mb-2">
-              <span className="text-display-lg text-ink">
-                1,000
-              </span>
+              <Counter to={1000} duration={2} />
               <span className="text-display-lg text-primary">+</span>
             </div>
             <div className="w-12 h-px bg-primary mb-4" />
@@ -22,9 +43,7 @@ export function Stats() {
           {/* Stat 2 */}
           <div className="flex flex-col items-center">
             <div className="flex items-baseline gap-2 mb-2">
-              <span className="text-display-lg text-ink">
-                4.9/5
-              </span>
+              <Counter to={4.9} duration={2} decimals={1} />
             </div>
             <div className="w-12 h-px bg-primary mb-4" />
             <span className="text-body-md font-medium text-muted">
@@ -35,9 +54,7 @@ export function Stats() {
           {/* Stat 3 */}
           <div className="flex flex-col items-center">
             <div className="flex items-baseline gap-2 mb-2">
-              <span className="text-display-lg text-ink">
-                4,500
-              </span>
+              <Counter to={4500} duration={2} />
               <span className="text-display-lg text-primary">+</span>
             </div>
             <div className="w-12 h-px bg-primary mb-4" />

@@ -1,26 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
-import Hls from 'hls.js';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Magnetic } from './Magnetic';
+import { useHlsVideo } from '../hooks/useHlsVideo';
+import { heroContent } from '../data/constants';
 
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1000], [0, 300]);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const videoSrc = 'https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8';
-
-    if (Hls.isSupported()) {
-      const hls = new Hls();
-      hls.loadSource(videoSrc);
-      hls.attachMedia(video);
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      video.src = videoSrc;
-    }
-  }, []);
+  useHlsVideo(videoRef, 'https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8');
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -54,20 +46,23 @@ export function Hero() {
 
       {/* Hero Band */}
       <div className="py-[96px] bg-transparent flex-1 flex items-center justify-center relative z-10 w-full pb-20">
-        <div className="max-w-[1000px] mx-auto px-6 md:px-12 w-full flex flex-col items-center text-center gap-6">
+        <motion.div style={{ y }} className="max-w-[1000px] mx-auto px-6 md:px-12 w-full flex flex-col items-center text-center gap-6">
           
-          <h1 className="hero-text text-display-xl text-[#faf9f5]">
-            Dominate Digital Search<br />With SEO Ustaad.
+          <h1 className="hero-text text-display-xl text-[#faf9f5]" dangerouslySetInnerHTML={{ __html: heroContent.title.replace('\\n', '<br />') }}>
           </h1>
           <p className="hero-text text-[18px] text-on-dark-soft max-w-2xl font-body leading-relaxed">
-            Premium Web Development, ROI-Driven SEO, and Meta Ads specialized for the Pakistani market. We don't just build sites; we build search authority.
+            {heroContent.description}
           </p>
           <div className="hero-text flex flex-col sm:flex-row gap-4 mt-6">
-            <a href="#services" className="btn-primary">Explore Services</a>
-            <a href="#work" className="btn-secondary-on-dark">Featured works</a>
+            <Magnetic>
+              <a href={heroContent.primaryAction.href} className="btn-primary">{heroContent.primaryAction.label}</a>
+            </Magnetic>
+            <Magnetic>
+              <a href={heroContent.secondaryAction.href} className="btn-secondary-on-dark">{heroContent.secondaryAction.label}</a>
+            </Magnetic>
           </div>
 
-        </div>
+        </motion.div>
       </div>
 
 
