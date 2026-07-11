@@ -17,40 +17,49 @@ export function PrivacyPolicy() {
           
           <h2 className="text-2xl font-display font-medium text-ink mt-12 mb-4">1. Introduction</h2>
           <p className="mb-6">
-            Welcome to SEO Ustaad. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.
+            Welcome to <strong>SEO Ustaad</strong> ("we", "our", or "us"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice, or our practices with regards to your personal information, please contact us at <a href="mailto:support@seoustaad.com" className="text-primary hover:text-primary-active transition-colors">support@seoustaad.com</a>.
+          </p>
+          <p className="mb-6">
+            This Privacy Policy applies to all information collected through our website (including localhost and deployed domains), as well as any related services, sales, marketing, or events.
           </p>
 
-          <h2 className="text-2xl font-display font-medium text-ink mt-12 mb-4">2. The Data We Collect About You</h2>
-          <p className="mb-6">
-            Personal data, or personal information, means any information about an individual from which that person can be identified. We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:
-          </p>
+          <h2 className="text-2xl font-display font-medium text-ink mt-12 mb-4">2. Information We Collect</h2>
+          <p className="mb-4">We collect personal information that you voluntarily provide to us when you express an interest in obtaining information about us or our products and Services.</p>
           <ul className="list-disc pl-6 mb-6 space-y-2">
-            <li><strong>Identity Data</strong> includes first name, last name, username or similar identifier.</li>
-            <li><strong>Contact Data</strong> includes email address and telephone numbers.</li>
-            <li><strong>Technical Data</strong> includes internet protocol (IP) address, browser type and version, time zone setting and location.</li>
-            <li><strong>Usage Data</strong> includes information about how you use our website, products and services.</li>
+            <li><strong>Personal Information Provided by You:</strong> We may collect names; phone numbers; email addresses; mailing addresses; contact preferences; and other similar information.</li>
+            <li><strong>Information Collected Automatically:</strong> We automatically collect certain information when you visit, use, or navigate the Website. This information does not reveal your specific identity but may include device and usage information, such as your IP address, browser and device characteristics, operating system, language preferences, referring URLs, and location data.</li>
           </ul>
 
-          <h2 className="text-2xl font-display font-medium text-ink mt-12 mb-4">3. How We Use Your Personal Data</h2>
-          <p className="mb-6">
-            We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:
-          </p>
+          <h2 className="text-2xl font-display font-medium text-ink mt-12 mb-4">3. How We Use Your Information</h2>
+          <p className="mb-4">We use personal information collected via our Website for a variety of business purposes described below:</p>
           <ul className="list-disc pl-6 mb-6 space-y-2">
-            <li>Where we need to perform the contract we are about to enter into or have entered into with you.</li>
-            <li>Where it is necessary for our legitimate interests (or those of a third party) and your interests and fundamental rights do not override those interests.</li>
-            <li>Where we need to comply with a legal obligation.</li>
+            <li><strong>To fulfill and manage your orders and services.</strong> We may use your information to fulfill and manage your SEO audits, web development projects, and consultation requests.</li>
+            <li><strong>To send administrative information to you.</strong> We may use your personal information to send you product, service, and new feature information and/or information about changes to our terms, conditions, and policies.</li>
+            <li><strong>To deliver targeted advertising to you.</strong> We may use your information to develop and display personalized content and advertising tailored to your interests.</li>
           </ul>
 
-          <h2 className="text-2xl font-display font-medium text-ink mt-12 mb-4">4. Data Security</h2>
+          <h2 className="text-2xl font-display font-medium text-ink mt-12 mb-4">4. Will Your Information Be Shared With Anyone?</h2>
           <p className="mb-6">
-            We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorised way, altered or disclosed. In addition, we limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know.
+            We only share information with your consent, to comply with laws, to provide you with services, to protect your rights, or to fulfill business obligations. We do not sell your personal data to third parties. We may share your data with trusted third-party vendors (like analytics providers or hosting services) who perform services for us or on our behalf.
           </p>
 
-          <h2 className="text-2xl font-display font-medium text-ink mt-12 mb-4">5. Contact Us</h2>
+          <h2 className="text-2xl font-display font-medium text-ink mt-12 mb-4">5. Cookies and Tracking Technologies</h2>
           <p className="mb-6">
-            If you have any questions about this privacy policy or our privacy practices, please contact us at:
+            We may use cookies and similar tracking technologies (like web beacons and pixels) to access or store information. Specific information about how we use such technologies and how you can refuse certain cookies is set out in our Cookie Notice.
+          </p>
+
+          <h2 className="text-2xl font-display font-medium text-ink mt-12 mb-4">6. How Long Do We Keep Your Information?</h2>
+          <p className="mb-6">
+            We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy notice, unless a longer retention period is required or permitted by law (such as tax, accounting, or other legal requirements).
+          </p>
+
+          <h2 className="text-2xl font-display font-medium text-ink mt-12 mb-4">7. Contact Us</h2>
+          <p className="mb-6">
+            If you have questions or comments about this notice, you may contact our Data Protection Officer (DPO) by email at:
             <br />
             Email: <a href="mailto:support@seoustaad.com" className="text-primary hover:text-primary-active transition-colors">support@seoustaad.com</a>
+            <br />
+            Phone: +92 337 9912300
           </p>
         </div>
       </div>

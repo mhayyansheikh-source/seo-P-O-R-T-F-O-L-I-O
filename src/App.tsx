@@ -7,8 +7,8 @@ import { CustomCursor } from './components/CustomCursor';
 
 // Lazy load below-the-fold components
 const Home = lazy(() => import('./pages/Home').then(module => ({ default: module.Home })));
-const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy').then(module => ({ default: module.PrivacyPolicy })));
-const TermsOfService = lazy(() => import('./pages/TermsOfService').then(module => ({ default: module.TermsOfService })));
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { TermsOfService } from './pages/TermsOfService';
 const ContactFooter = lazy(() => import('./components/ContactFooter').then(module => ({ default: module.ContactFooter })));
 const BottomNav = lazy(() => import('./components/BottomNav').then(module => ({ default: module.BottomNav })));
 
