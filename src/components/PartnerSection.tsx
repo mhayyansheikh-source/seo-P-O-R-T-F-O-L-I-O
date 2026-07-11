@@ -75,7 +75,7 @@ export function PartnerSection() {
         ))}
 
         <div className="relative z-10 flex flex-col items-center pointer-events-none">
-          <h2 className="font-serif text-[48px] md:text-[64px] lg:text-[80px] text-[var(--color-primary-dark)] mb-12 leading-none">
+          <h2 className="text-display-lg lg:text-display-xl text-[var(--color-primary-dark)] mb-12">
             Partner with us
           </h2>
           

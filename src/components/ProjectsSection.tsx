@@ -53,7 +53,7 @@ export function ProjectsSection() {
           isInView ? "animate-fade-in-up" : "opacity-0"
         )}
       >
-        <h2 className="font-serif text-[40px] md:text-[56px] text-[var(--color-primary-dark)] leading-none">
+        <h2 className="text-display-md md:text-display-lg text-[var(--color-primary-dark)]">
           Our Digital Footprint
         </h2>
         

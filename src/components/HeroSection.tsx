@@ -16,7 +16,7 @@ export function HeroSection() {
         {/* Logo */}
         <h1 
           className={cn(
-            "font-serif text-[32px] md:text-[40px] lg:text-[44px] font-semibold text-[var(--color-primary-dark)] tracking-tight mb-4",
+            "text-display-sm md:text-display-md lg:text-display-lg font-semibold text-[var(--color-primary-dark)] mb-4",
             isInView ? "animate-fade-in-up" : "opacity-0"
           )}
           style={{ animationDelay: '0.1s' }}
@@ -38,7 +38,7 @@ export function HeroSection() {
         {/* Main Heading */}
         <h2 
           className={cn(
-            "text-[32px] md:text-[40px] lg:text-[44px] leading-[1.1] text-[var(--color-secondary-dark)] tracking-tight mb-6",
+            "text-display-sm md:text-display-md lg:text-display-lg text-[var(--color-secondary-dark)] mb-6",
             isInView ? "animate-fade-in-up" : "opacity-0"
           )}
           style={{ animationDelay: '0.3s' }}

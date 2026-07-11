@@ -70,7 +70,7 @@ export function TestimonialCarousel() {
       )}
     >
       <div className="md:max-w-4xl md:ml-auto px-6 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center">
-        <h3 className="font-serif text-[32px] md:text-[40px] text-[var(--color-primary-dark)] tracking-tight">
+        <h3 className="text-display-sm md:text-display-md text-[var(--color-primary-dark)]">
           What partners say
         </h3>
         <div className="flex items-center gap-2 mt-4 md:mt-0">

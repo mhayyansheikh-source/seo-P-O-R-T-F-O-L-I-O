@@ -43,7 +43,7 @@ export function TestimonialQuote() {
       
       <h3 
         className={cn(
-          "text-[32px] md:text-[40px] lg:text-[44px] leading-[1.1] text-[var(--color-secondary-dark)] tracking-tight mb-6 font-serif",
+          "text-display-sm md:text-display-md lg:text-display-lg text-[var(--color-secondary-dark)] mb-6 font-serif",
           isInView ? "animate-fade-in-up" : "opacity-0"
         )}
         style={{ animationDelay: '0.2s' }}

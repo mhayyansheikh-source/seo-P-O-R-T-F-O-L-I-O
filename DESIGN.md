@@ -32,25 +32,25 @@ colors:
 
 typography:
   display-xl:
-    fontFamily: "Copernicus, Tiempos Headline, serif"
+    fontFamily: "Copernicus, Tiempos Headline, Cormorant Garamond, serif"
     fontSize: 64px
     fontWeight: 400
     lineHeight: 1.05
     letterSpacing: -1.5px
   display-lg:
-    fontFamily: "Copernicus, Tiempos Headline, serif"
+    fontFamily: "Copernicus, Tiempos Headline, Cormorant Garamond, serif"
     fontSize: 48px
     fontWeight: 400
     lineHeight: 1.1
     letterSpacing: -1px
   display-md:
-    fontFamily: "Copernicus, Tiempos Headline, serif"
+    fontFamily: "Copernicus, Tiempos Headline, Cormorant Garamond, serif"
     fontSize: 36px
     fontWeight: 400
     lineHeight: 1.15
     letterSpacing: -0.5px
   display-sm:
-    fontFamily: "Copernicus, Tiempos Headline, serif"
+    fontFamily: "Copernicus, Tiempos Headline, Cormorant Garamond, serif"
     fontSize: 28px
     fontWeight: 400
     lineHeight: 1.2

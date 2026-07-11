@@ -61,7 +61,7 @@ export function Journal() {
               </div>
               
               <div>
-                <h3 className="text-[24px] font-display font-medium text-ink group-hover:text-on-dark mb-4 transition-colors">
+                <h3 className="text-title-lg font-display text-ink group-hover:text-on-dark mb-4 transition-colors">
                   {service.title}
                 </h3>
                 <ul className="flex flex-col gap-3">
