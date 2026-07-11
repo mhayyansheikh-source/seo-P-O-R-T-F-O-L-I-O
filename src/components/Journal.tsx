@@ -20,7 +20,7 @@ const SERVICES = [
 
 export function Journal() {
   return (
-    <section id="services" className="bg-canvas py-[96px]">
+    <section id="services" className="bg-canvas py-24 md:py-32">
       <div className="max-w-[1200px] mx-auto px-6 md:px-12">
         
         {/* Header */}
@@ -61,7 +61,7 @@ export function Journal() {
               </div>
               
               <div>
-                <h3 className="text-title-lg font-display text-ink group-hover:text-on-dark mb-4 transition-colors">
+                <h3 className="text-title-lg font-display text-ink group-hover:text-[var(--color-primary)] group-hover:translate-x-1 mb-4 transition-all duration-300">
                   {service.title}
                 </h3>
                 <ul className="flex flex-col gap-3">

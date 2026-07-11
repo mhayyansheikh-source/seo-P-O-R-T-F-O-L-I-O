@@ -46,12 +46,12 @@ export function PartnerSection() {
   };
 
   return (
-    <section ref={ref} className="w-full py-12 px-6">
+    <section ref={ref} className="w-full py-24 md:py-32 px-6">
       <div 
         ref={sectionRef}
         onMouseMove={handleMouseMove}
         className={cn(
-          "max-w-7xl mx-auto py-32 md:py-48 bg-white rounded-[40px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden flex flex-col items-center justify-center text-center cursor-crosshair",
+          "max-w-7xl mx-auto py-20 md:py-48 bg-white rounded-[24px] md:rounded-[40px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden flex flex-col items-center justify-center text-center cursor-crosshair",
           isInView ? "animate-fade-in-up" : "opacity-0"
         )}
       >
@@ -68,22 +68,25 @@ export function PartnerSection() {
           >
             <img 
               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80" 
-              alt="trail" 
+              alt="" 
+              aria-hidden="true"
+              loading="lazy"
               className="w-full h-full object-cover"
             />
           </div>
         ))}
 
         <div className="relative z-10 flex flex-col items-center pointer-events-none">
-          <h2 className="text-display-lg lg:text-display-xl text-[var(--color-primary-dark)] mb-12">
-            Partner with us
+          <h2 className="text-display-lg lg:text-display-xl text-[var(--color-primary)] mb-12">
+            Become an industry leader
           </h2>
           
           <div className="pointer-events-auto">
             <Button variant="primary" className="flex items-center gap-3 pl-2 pr-6 py-2">
               <img 
                 src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" 
-                alt="Avatar" 
+                alt="SEO Ustaad Portrait" 
+                loading="lazy"
                 className="w-10 h-10 rounded-full object-cover border-2 border-white/20"
               />
               <span>Start chat with SEO Ustaad</span>

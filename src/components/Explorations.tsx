@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Image } from './Image';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -99,7 +100,7 @@ export function Explorations() {
                     className="w-[200px] md:w-[320px] aspect-square bg-surface-card border border-hairline rounded-md overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-500 shadow-xl"
                     style={{ transform: `rotate(${i % 2 === 0 ? -6 : 4}deg)` }}
                   >
-                    <img src={img} alt="Exploration" className="w-full h-full object-cover transition-all duration-500" />
+                    <Image src={img} alt="Exploration" className="w-full h-full object-cover transition-all duration-500" containerClassName="w-full h-full" />
                   </div>
                 ))}
               </div>
@@ -114,7 +115,7 @@ export function Explorations() {
                     className="w-[200px] md:w-[320px] aspect-square bg-surface-card border border-hairline rounded-md overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-500 shadow-xl"
                     style={{ transform: `rotate(${i % 2 === 0 ? 5 : -3}deg)` }}
                   >
-                    <img src={img} alt="Exploration" className="w-full h-full object-cover transition-all duration-500" />
+                    <Image src={img} alt="Exploration" className="w-full h-full object-cover transition-all duration-500" containerClassName="w-full h-full" />
                   </div>
                 ))}
               </div>

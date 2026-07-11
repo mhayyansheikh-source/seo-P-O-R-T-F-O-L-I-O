@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useInViewAnimation } from '../hooks/useInViewAnimation';
 import { cn } from './Button';
+import { Image } from './Image';
 
 type Category = 'All' | 'E-Commerce & Brands' | 'Healthcare & Clinics' | 'Corporate & B2B Services' | 'Lifestyle & Hospitality';
 
@@ -46,14 +47,14 @@ export function ProjectsSection() {
     : PROJECTS.filter(p => p.category === activeCategory);
 
   return (
-    <section ref={ref} className="max-w-[1200px] mx-auto px-6 py-20 w-full">
+    <section ref={ref} className="max-w-[1200px] mx-auto px-6 py-24 md:py-32 w-full">
       <div 
         className={cn(
           "mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6",
           isInView ? "animate-fade-in-up" : "opacity-0"
         )}
       >
-        <h2 className="text-display-md md:text-display-lg text-[var(--color-primary-dark)]">
+        <h2 className="text-display-md md:text-display-lg text-[var(--color-primary)]">
           Our Digital Footprint
         </h2>
         
@@ -66,8 +67,8 @@ export function ProjectsSection() {
               className={cn(
                 "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
                 activeCategory === cat 
-                  ? "bg-[var(--color-primary-dark)] text-white" 
-                  : "bg-gray-100 text-[var(--color-muted-text)] hover:bg-gray-200"
+                  ? "bg-[var(--color-primary)] text-white" 
+                  : "bg-gray-100 text-[var(--color-muted)] hover:bg-gray-200"
               )}
             >
               {cat}
@@ -84,26 +85,24 @@ export function ProjectsSection() {
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
-              "group flex flex-col gap-4",
+              "group flex flex-col gap-4 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-2",
               isInView ? "animate-fade-in-up" : "opacity-0"
             )}
             style={{ animationDelay: `${0.1 * (index % 4)}s` }}
           >
-            <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg relative">
-              <img 
-                src={project.image} 
-                alt={project.name} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-[var(--color-primary-dark)]/10 group-hover:bg-transparent transition-colors duration-300" />
-            </div>
+            <Image 
+              containerClassName="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg relative"
+              src={project.image} 
+              alt={project.name} 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-[var(--color-primary)]/10 group-hover:bg-transparent transition-colors duration-300 rounded-2xl pointer-events-none" />
             
             <div className="flex flex-col ml-4">
-              <h3 className="font-serif text-2xl font-semibold text-[var(--color-primary-dark)] group-hover:text-[var(--color-brand-accent)] transition-colors">
+              <h3 className="font-serif text-2xl font-semibold text-[var(--color-primary)] group-hover:text-[var(--color-primary)] transition-colors">
                 {project.name}
               </h3>
-              <p className="text-sm text-[var(--color-muted-text)]">
+              <p className="text-sm text-[var(--color-muted)]">
                 {project.desc}
               </p>
             </div>

@@ -7,8 +7,13 @@ import { Explorations } from './components/Explorations';
 import { Stats } from './components/Stats';
 import { ContactFooter } from './components/ContactFooter';
 
+import { TopNav } from './components/TopNav';
+import { BottomNav } from './components/BottomNav';
+
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    return !sessionStorage.getItem('hasVisited');
+  });
 
   // Prevent scrolling while loading
   useEffect(() => {
@@ -16,8 +21,10 @@ function App() {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
-      // Quick scroll to top on load
       window.scrollTo(0, 0);
+      if (!sessionStorage.getItem('hasVisited')) {
+        sessionStorage.setItem('hasVisited', 'true');
+      }
     }
   }, [isLoading]);
 
@@ -26,12 +33,14 @@ function App() {
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       
       <main className={`transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+        <TopNav />
         <Hero />
         <SelectedWorks />
         <Journal />
         <Explorations />
         <Stats />
         <ContactFooter />
+        <BottomNav />
       </main>
     </>
   );

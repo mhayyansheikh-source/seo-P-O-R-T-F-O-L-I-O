@@ -9,14 +9,14 @@ export function HeroSection() {
   return (
     <section 
       ref={ref}
-      className="flex flex-col items-center justify-center w-full px-6 pt-12 md:pt-16 pb-16"
+      className="flex flex-col items-center justify-center w-full px-6 pt-24 md:pt-32 pb-24 md:pb-32"
     >
-      <div className="max-w-[440px] w-full flex flex-col items-start">
+      <div className="max-w-[440px] md:max-w-2xl lg:max-w-4xl w-full flex flex-col items-start">
         
         {/* Logo */}
         <h1 
           className={cn(
-            "text-display-sm md:text-display-md lg:text-display-lg font-semibold text-[var(--color-primary-dark)] mb-4",
+            "text-display-sm md:text-display-md lg:text-display-lg font-semibold text-[var(--color-primary)] mb-4",
             isInView ? "animate-fade-in-up" : "opacity-0"
           )}
           style={{ animationDelay: '0.1s' }}
@@ -27,7 +27,7 @@ export function HeroSection() {
         {/* Tagline */}
         <p 
           className={cn(
-            "font-mono text-xs md:text-sm text-[var(--color-primary-dark)] mb-2 uppercase tracking-wider",
+            "font-mono text-xs md:text-sm text-[var(--color-primary)] mb-2 uppercase tracking-wider",
             isInView ? "animate-fade-in-up" : "opacity-0"
           )}
           style={{ animationDelay: '0.2s' }}
@@ -38,31 +38,31 @@ export function HeroSection() {
         {/* Main Heading */}
         <h2 
           className={cn(
-            "text-display-sm md:text-display-md lg:text-display-lg text-[var(--color-secondary-dark)] mb-6",
+            "text-display-sm md:text-display-md lg:text-display-lg text-[var(--color-ink)] mb-6",
             isInView ? "animate-fade-in-up" : "opacity-0"
           )}
           style={{ animationDelay: '0.3s' }}
         >
           <span className="block font-sans">Scale your brand,</span>
-          <span className="block font-serif text-[var(--color-brand-accent)]">own your niche.</span>
+          <span className="block font-serif text-[var(--color-primary)]">own your niche.</span>
         </h2>
 
         {/* Description Paragraphs */}
         <div 
           className={cn(
-            "flex flex-col gap-6 text-sm md:text-base text-[var(--color-primary-dark)] leading-relaxed mt-2",
+            "flex flex-col gap-6 text-sm md:text-base text-[var(--color-primary)] leading-relaxed mt-2",
             isInView ? "animate-fade-in-up" : "opacity-0"
           )}
           style={{ animationDelay: '0.4s' }}
         >
           <p>
-            I spent years reverse-engineering search algorithms to understand what makes brands truly visible. I founded SEO Ustaad to bring enterprise-level growth strategies to ambitious founders.
+            After years of reverse-engineering search algorithms to uncover what makes brands truly visible, I founded SEO Ustaad to bring enterprise-level growth strategies to ambitious founders.
           </p>
           <p>
-            We are a deliberately specialized team. We focus on data-driven organic growth, high-converting copy, and brand authority that turns traffic into revenue.
+            Today, we are a deliberately specialized team focused on data-driven organic growth, high-converting copy, and brand authority—turning your traffic into measurable revenue.
           </p>
-          <p className="font-medium">
-            Growth partnerships start at $5,000 per month.
+          <p className="font-semibold">
+            Growth partnerships start at $999 per month.
           </p>
         </div>
 

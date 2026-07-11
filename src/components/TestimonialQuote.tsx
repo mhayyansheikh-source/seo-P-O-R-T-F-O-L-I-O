@@ -31,7 +31,7 @@ export function TestimonialQuote() {
   return (
     <section 
       ref={ref}
-      className="py-12 px-6 max-w-2xl mx-auto flex flex-col items-center text-center"
+      className="py-24 md:py-32 px-6 max-w-2xl mx-auto flex flex-col items-center text-center"
     >
       <Quote 
         className={cn(
@@ -43,7 +43,7 @@ export function TestimonialQuote() {
       
       <h3 
         className={cn(
-          "text-display-sm md:text-display-md lg:text-display-lg text-[var(--color-secondary-dark)] mb-6 font-serif",
+          "text-display-sm md:text-display-md lg:text-display-lg text-[var(--color-ink)] mb-6 font-serif",
           isInView ? "animate-fade-in-up" : "opacity-0"
         )}
         style={{ animationDelay: '0.2s' }}
@@ -53,7 +53,7 @@ export function TestimonialQuote() {
       
       <p 
         className={cn(
-          "italic text-sm text-[var(--color-muted-text)] mb-8 font-serif",
+          "italic text-sm text-[var(--color-muted)] mb-8 font-serif",
           isInView ? "animate-fade-in-up" : "opacity-0"
         )}
         style={{ animationDelay: '0.3s' }}
@@ -85,7 +85,8 @@ export function TestimonialQuote() {
       >
         <img 
           src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800" 
-          alt="Professional Portrait" 
+          alt="SEO Ustaad Professional Portrait" 
+          loading="lazy"
           className="w-full h-auto object-cover"
         />
       </div>

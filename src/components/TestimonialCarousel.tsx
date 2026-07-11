@@ -65,12 +65,12 @@ export function TestimonialCarousel() {
     <section 
       ref={ref}
       className={cn(
-        "w-full py-20 overflow-hidden",
+        "w-full py-24 md:py-32 overflow-hidden",
         isInView ? "animate-fade-in-up" : "opacity-0"
       )}
     >
       <div className="md:max-w-4xl md:ml-auto px-6 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center">
-        <h3 className="text-display-sm md:text-display-md text-[var(--color-primary-dark)]">
+        <h3 className="text-display-sm md:text-display-md text-[var(--color-primary)]">
           What partners say
         </h3>
         <div className="flex items-center gap-2 mt-4 md:mt-0">
@@ -95,15 +95,15 @@ export function TestimonialCarousel() {
               key={i} 
               className="min-w-[calc(100vw-48px)] md:min-w-[427.5px] bg-white rounded-[32px] md:rounded-[40px] shadow-[0_4px_16px_rgba(0,0,0,0.08)] px-6 md:pl-10 md:pr-24 py-8 flex-shrink-0"
             >
-              <Quote className="w-8 h-8 text-[var(--color-brand-accent)] mb-6 opacity-40" />
-              <p className="text-base text-[var(--color-secondary-dark)] leading-relaxed mb-8">
+              <Quote className="w-8 h-8 text-[var(--color-primary)] mb-6 opacity-40" />
+              <p className="text-base text-[var(--color-ink)] leading-relaxed mb-8">
                 "{t.text}"
               </p>
               <div className="flex items-center gap-4">
-                <img src={t.avatar} alt={t.name} className="w-12 h-12 rounded-full object-cover" />
+                <img src={t.avatar} alt={`${t.name} Portrait`} loading="lazy" className="w-12 h-12 rounded-full object-cover" />
                 <div>
-                  <h5 className="font-semibold text-sm text-[var(--color-primary-dark)]">{t.name}</h5>
-                  <p className="text-xs text-[var(--color-muted-text)]">→ {t.role}</p>
+                  <h5 className="font-semibold text-sm text-[var(--color-primary)]">{t.name}</h5>
+                  <p className="text-xs text-[var(--color-muted)]">→ {t.role}</p>
                 </div>
               </div>
             </div>
@@ -114,13 +114,13 @@ export function TestimonialCarousel() {
         <div className="flex gap-3 mt-8">
           <button 
             onClick={handlePrev}
-            className="w-12 h-12 rounded-full border border-[var(--color-secondary-dark)]/20 flex items-center justify-center hover:bg-gray-50 transition-colors"
+            className="w-12 h-12 rounded-full border border-[var(--color-ink)]/20 flex items-center justify-center hover:bg-gray-50 transition-colors"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button 
             onClick={handleNext}
-            className="w-12 h-12 rounded-full border border-[var(--color-secondary-dark)]/20 flex items-center justify-center hover:bg-gray-50 transition-colors"
+            className="w-12 h-12 rounded-full border border-[var(--color-ink)]/20 flex items-center justify-center hover:bg-gray-50 transition-colors"
           >
             <ChevronRight className="w-5 h-5" />
           </button>

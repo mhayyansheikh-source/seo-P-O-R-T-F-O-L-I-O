@@ -56,8 +56,8 @@ export function ContactFooter() {
               </div>
               Accepting new clients
             </div>
-            <p className="text-on-dark-soft text-[14px]">
-              Let's build your brand. Whether you need an elite web experience or to dominate the search results.
+            <p className="text-on-dark-soft text-[14px] leading-relaxed">
+              Ready to scale? Partner with us to build an elite web experience and dominate your search rankings.
             </p>
           </div>
 

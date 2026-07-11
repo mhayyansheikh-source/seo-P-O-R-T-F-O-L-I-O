@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Image } from './Image';
 
 type Category = 'All' | 'E-Commerce & Brands' | 'Healthcare & Clinics' | 'Corporate & B2B Services' | 'Lifestyle & Hospitality';
 
@@ -103,11 +104,11 @@ export function SelectedWorks() {
                   className={`${cardClass} flex flex-col gap-6`}
                 >
                   <div className="relative w-full aspect-[16/10] overflow-hidden rounded-md border border-hairline/20 bg-surface-dark-elevated">
-                    <img 
+                    <Image 
                       src={project.image} 
                       alt={project.name} 
-                      loading="lazy"
-                      className="absolute inset-0 w-full h-full object-cover"
+                      containerClassName="w-full h-full absolute inset-0"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   
