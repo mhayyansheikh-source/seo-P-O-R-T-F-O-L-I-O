@@ -1,10 +1,12 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Hls from 'hls.js';
 import gsap from 'gsap';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -66,7 +68,19 @@ export function Hero() {
         </div>
 
         <div className="flex items-center gap-4">
-          <a href="https://becomeabrandowner.seoustaad.com/" target="_blank" rel="noopener noreferrer" className="btn-primary">Talk to an Expert</a>
+          <a href="https://becomeabrandowner.seoustaad.com/" target="_blank" rel="noopener noreferrer" className="hidden md:inline-flex btn-primary">Talk to an Expert</a>
+          {/* Mobile Menu Toggle */}
+          <button 
+            className="md:hidden text-on-dark p-2 hover:text-primary transition-colors"
+            onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Open menu"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
         </div>
       </nav>
 
@@ -87,6 +101,37 @@ export function Hero() {
 
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="fixed inset-0 z-[100] bg-surface-dark flex flex-col items-center justify-center"
+          >
+            <button 
+              className="absolute top-6 right-6 text-on-dark p-2 hover:text-primary transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <nav className="flex flex-col items-center gap-8 text-2xl font-display text-on-dark">
+              <a href="#home" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary transition-colors">Home</a>
+              <a href="#services" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary transition-colors">Services</a>
+              <a href="#work" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary transition-colors">Work</a>
+              <a href="#packages" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary transition-colors">Packages</a>
+              <a href="https://becomeabrandowner.seoustaad.com/" target="_blank" rel="noopener noreferrer" className="btn-primary mt-4 text-[16px] font-body">Talk to an Expert</a>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
