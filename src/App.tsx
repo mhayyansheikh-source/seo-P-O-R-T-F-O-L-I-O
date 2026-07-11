@@ -1,15 +1,14 @@
 import { useState, useEffect, Suspense, lazy } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { Routes, Route } from 'react-router-dom';
 import { LoadingScreen } from './components/LoadingScreen';
-import { Hero } from './components/Hero';
 import { TopNav } from './components/TopNav';
 import { CustomCursor } from './components/CustomCursor';
 
 // Lazy load below-the-fold components
-const SelectedWorks = lazy(() => import('./components/SelectedWorks').then(module => ({ default: module.SelectedWorks })));
-const Journal = lazy(() => import('./components/Journal').then(module => ({ default: module.Journal })));
-const Explorations = lazy(() => import('./components/Explorations').then(module => ({ default: module.Explorations })));
-const Stats = lazy(() => import('./components/Stats').then(module => ({ default: module.Stats })));
+const Home = lazy(() => import('./pages/Home').then(module => ({ default: module.Home })));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy').then(module => ({ default: module.PrivacyPolicy })));
+const TermsOfService = lazy(() => import('./pages/TermsOfService').then(module => ({ default: module.TermsOfService })));
 const ContactFooter = lazy(() => import('./components/ContactFooter').then(module => ({ default: module.ContactFooter })));
 const BottomNav = lazy(() => import('./components/BottomNav').then(module => ({ default: module.BottomNav })));
 
@@ -24,7 +23,6 @@ function App() {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
-      window.scrollTo(0, 0);
       if (!sessionStorage.getItem('hasVisited')) {
         sessionStorage.setItem('hasVisited', 'true');
       }
@@ -41,12 +39,12 @@ function App() {
       
       <main className={`transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <TopNav />
-        <Hero />
         <Suspense fallback={<div className="h-screen bg-canvas" />}>
-          <SelectedWorks />
-          <Journal />
-          <Explorations />
-          <Stats />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsOfService />} />
+          </Routes>
           <ContactFooter />
           <BottomNav />
         </Suspense>
