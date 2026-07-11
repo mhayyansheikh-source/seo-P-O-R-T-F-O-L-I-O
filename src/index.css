@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #faf9f5;
+  --color-ink: #141413;
+  --color-primary: #cc785c;
+  --color-primary-active: #a9583e;
+  --color-surface-card: #efe9de;
+  --color-surface-dark: #181715;
+  --color-surface-dark-elevated: #252320;
+  --color-on-dark: #faf9f5;
+  --color-on-dark-soft: #a09d96;
+  --color-on-primary: #ffffff;
+  --color-muted: #6c6a64;
+  --color-muted-soft: #8e8b82;
+  --color-hairline: #e6dfd8;
+  --color-hairline-soft: #ebe6df;
+
+  --font-body: 'Inter', sans-serif;
+  --font-display: 'Cormorant Garamond', 'Tiempos Headline', serif;
+}
+
+@layer utilities {
+  .btn-primary {
+    @apply bg-primary text-on-primary font-body font-medium rounded-md px-[20px] py-[12px] h-[40px] inline-flex items-center justify-center transition-colors hover:bg-primary-active;
+  }
+  .btn-secondary {
+    @apply bg-canvas text-ink font-body font-medium rounded-md px-[20px] py-[12px] h-[40px] inline-flex items-center justify-center border border-hairline transition-colors hover:bg-surface-card;
+  }
+  .btn-secondary-on-dark {
+    @apply bg-surface-dark-elevated text-on-dark font-body font-medium rounded-md px-[20px] py-[12px] inline-flex items-center justify-center transition-colors hover:bg-[#32302d];
+  }
+  .feature-card {
+    @apply bg-surface-card text-ink rounded-xl p-[32px];
+  }
+  .product-mockup-card-dark {
+    @apply bg-surface-dark text-on-dark rounded-xl p-[32px];
+  }
+  .hero-band {
+    @apply bg-canvas text-ink py-[96px];
+  }
+  .cta-band-coral {
+    @apply bg-primary text-on-primary rounded-xl p-[64px];
+  }
+  .footer-dark {
+    @apply bg-surface-dark text-on-dark-soft p-[64px];
+  }
+
+  .text-display-xl {
+    @apply font-display text-[64px] font-normal leading-[1.05] tracking-[-1.5px];
+  }
+  .text-display-lg {
+    @apply font-display text-[48px] font-normal leading-[1.1] tracking-[-1px];
+  }
+  .text-display-md {
+    @apply font-display text-[36px] font-normal leading-[1.15] tracking-[-0.5px];
+  }
+  .text-display-sm {
+    @apply font-display text-[28px] font-normal leading-[1.2] tracking-[-0.3px];
+  }
+
+  .animate-role-fade-in {
+    animation: role-fade-in 0.4s ease-out forwards;
+  }
+}
+
+@keyframes role-fade-in {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+html, body {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
