@@ -1,0 +1,12 @@
+# SEO Ustaad Portfolio
+
+Welcome to SEO Ustaad's Portfolio (https://portfolio.seoustaad.com). 
+We provide premium web development, growth marketing, and SEO services to help businesses scale their operations.
+
+## Key Links
+- Home: https://portfolio.seoustaad.com/
+- Privacy Policy: https://portfolio.seoustaad.com/privacy
+- Terms of Service: https://portfolio.seoustaad.com/terms
+
+## Services
+We specialize in creating modern, fast, and SEO-optimized web experiences tailored for local and global markets. Our data-driven strategies ensure organic growth and high conversion rates.

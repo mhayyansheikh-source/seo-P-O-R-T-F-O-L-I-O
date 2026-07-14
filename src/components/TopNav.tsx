@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { cn } from './Button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { navLinks, globalConstants } from '../data/constants';
-import { Link } from 'react-router-dom';
 
 export function TopNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -22,14 +21,14 @@ export function TopNav() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 flex items-center justify-between px-6 md:px-12",
         scrolled ? "bg-white/90 backdrop-blur-md border-b border-gray-100 py-4 shadow-sm" : "bg-transparent py-6"
       )}>
-        <Link to="/" className="flex items-center gap-2">
+        <a href="/" className="flex items-center gap-2">
           <svg width="24" height="24" viewBox="0 0 24 24" fill={scrolled ? "#cc785c" : "#faf9f5"}>
             <path d="M12 0L13.5 10.5L24 12L13.5 13.5L12 24L10.5 13.5L0 12L10.5 10.5L12 0Z" />
           </svg>
           <span className={cn("font-display text-[22px] font-medium tracking-tight transition-colors duration-300", scrolled ? "text-[#141413]" : "text-[#faf9f5]")}>
             {globalConstants.brandName}
           </span>
-        </Link>
+        </a>
 
         
         {/* Desktop Links */}

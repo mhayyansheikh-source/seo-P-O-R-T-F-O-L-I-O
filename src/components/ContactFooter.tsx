@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 
 export function ContactFooter() {
@@ -82,8 +81,8 @@ export function ContactFooter() {
         <div className="w-full max-w-[1200px] mx-auto px-6 md:px-12 mt-16 pt-8 border-t border-on-dark-soft/20 flex flex-col sm:flex-row justify-between items-center gap-4 text-[13px] text-on-dark-soft">
           <p>© {new Date().getFullYear()} SEO Ustaad. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link to="/privacy" className="hover:text-on-dark transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-on-dark transition-colors">Terms of Service</Link>
+            <a href="/privacy" className="hover:text-on-dark transition-colors">Privacy Policy</a>
+            <a href="/terms" className="hover:text-on-dark transition-colors">Terms of Service</a>
           </div>
         </div>
       </footer>

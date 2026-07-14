@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Hero } from '../components/Hero';
+import { SelectedWorks } from '../components/SelectedWorks';
+import { Journal } from '../components/Journal';
+import { Explorations } from '../components/Explorations';
+import { Stats } from '../components/Stats';
+---
+
+<Layout 
+  title="SEO Ustaad - Premium Growth Marketing & SEO Agency"
+  description="SEO Ustaad is a premium growth marketing and SEO agency focused on data-driven organic growth, high-converting copy, and brand authority."
+>
+  <Hero client:load />
+  <SelectedWorks client:visible />
+  <Journal client:visible />
+  <Explorations client:visible />
+  <Stats client:visible />
+</Layout>

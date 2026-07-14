@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Hero } from '../components/Hero';
+import { SelectedWorks } from '../components/SelectedWorks';
+import { Stats } from '../components/Stats';
+import seoData from '../data/seo-targets.json';
+
+export async function getStaticPaths() {
+  const { cities, keywords } = seoData;
+  
+  return cities.flatMap((city: string) => {
+    return keywords.map((keyword: string) => {
+      // Create slug like 'website-development-in-lahore'
+      const formattedKeyword = keyword.toLowerCase().replace(/\s+/g, '-');
+      const formattedCity = city.toLowerCase().replace(/\s+/g, '-');
+      const slug = `${formattedKeyword}-in-${formattedCity}`;
+      
+      return {
+        params: { slug },
+        props: { city, keyword },
+      };
+    });
+  });
+}
+
+const { city, keyword } = Astro.props;
+
+// Capitalize keyword for Title
+const capitalizedKeyword = keyword.split(' ').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+const title = `${capitalizedKeyword} in ${city} | SEO Ustaad`;
+const description = `Looking for the best ${keyword} in ${city}? SEO Ustaad provides premium growth marketing and web development services tailored for businesses in ${city}.`;
+---
+
+<Layout title={title} description={description}>
+  <Hero client:load />
+  
+  <section class="py-12 bg-canvas px-4 md:px-8 text-center text-primary/80">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-5xl font-serif text-primary mb-6">Expert {capitalizedKeyword} in {city}</h2>
+      <p class="text-lg mb-4">We help local businesses in {city} scale their operations with cutting-edge {keyword} strategies. Our data-driven organic growth and high-converting copy ensures that you dominate the local market.</p>
+    </div>
+  </section>
+
+  <SelectedWorks client:visible />
+  <Stats client:visible />
+</Layout>
