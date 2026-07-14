@@ -10,7 +10,8 @@ export const navLinks = [
       { label: 'Lahore', href: '/website-development-in-lahore' },
       { label: 'Islamabad', href: '/website-development-in-islamabad' },
       { label: 'Faisalabad', href: '/website-development-in-faisalabad' },
-      { label: 'Peshawar', href: '/website-development-in-peshawar' }
+      { label: 'Peshawar', href: '/website-development-in-peshawar' },
+      { label: 'View all locations →', href: '/locations' }
     ]
   },
   { 
@@ -20,7 +21,8 @@ export const navLinks = [
       { label: 'Ecommerce Development', href: '/ecommerce-website-development-in-karachi' },
       { label: 'Custom Web Dev', href: '/custom-website-development-in-lahore' },
       { label: 'Front End Services', href: '/front-end-website-development-in-islamabad' },
-      { label: 'Web Dev Agency', href: '/website-development-agency-in-karachi' }
+      { label: 'Web Dev Agency', href: '/website-development-agency-in-karachi' },
+      { label: 'View all specialties →', href: '/services' }
     ]
   }
 ];

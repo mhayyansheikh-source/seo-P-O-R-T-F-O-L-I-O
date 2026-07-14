@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import seoData from '../data/seo-targets.json';
+
+const { cities, keywords } = seoData;
+const title = "Our Locations | SEO Ustaad";
+const description = "Explore our digital marketing and website development services across all major cities in Pakistan.";
+---
+
+<Layout title={title} description={description}>
+  <div class="pt-32 pb-20 px-6 md:px-12 max-w-[1200px] mx-auto min-h-screen">
+    <h1 class="text-4xl md:text-6xl font-display text-primary mb-6">Service Locations</h1>
+    <p class="text-lg text-primary/70 mb-16 max-w-2xl">Find our specialized website development and SEO services in your city.</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {cities.map((city: string) => (
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 transition-shadow hover:shadow-md">
+          <h2 class="text-2xl font-serif text-primary mb-4 border-b border-gray-100 pb-3">{city}</h2>
+          <ul class="flex flex-col gap-3">
+            {keywords.map((keyword: string) => {
+              const formattedKeyword = keyword.toLowerCase().replace(/\s+/g, '-');
+              const formattedCity = city.toLowerCase().replace(/\s+/g, '-');
+              const slug = `/${formattedKeyword}-in-${formattedCity}`;
+              const capitalizedKeyword = keyword.split(' ').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+              
+              return (
+                <li>
+                  <a href={slug} class="text-[14px] text-gray-600 hover:text-[#cc785c] transition-colors flex items-center gap-2">
+                    <svg class="w-3 h-3 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    {capitalizedKeyword}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>
