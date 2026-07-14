@@ -2,7 +2,27 @@ export const navLinks = [
   { label: 'Home', href: '/#home' },
   { label: 'Services', href: '/#services' },
   { label: 'Work', href: '/#work' },
-  { label: 'Packages', href: '/#packages' }
+  { 
+    label: 'Top Locations', 
+    href: '#',
+    children: [
+      { label: 'Karachi', href: '/website-development-in-karachi' },
+      { label: 'Lahore', href: '/website-development-in-lahore' },
+      { label: 'Islamabad', href: '/website-development-in-islamabad' },
+      { label: 'Faisalabad', href: '/website-development-in-faisalabad' },
+      { label: 'Peshawar', href: '/website-development-in-peshawar' }
+    ]
+  },
+  { 
+    label: 'Specialties', 
+    href: '#',
+    children: [
+      { label: 'Ecommerce Development', href: '/ecommerce-website-development-in-karachi' },
+      { label: 'Custom Web Dev', href: '/custom-website-development-in-lahore' },
+      { label: 'Front End Services', href: '/front-end-website-development-in-islamabad' },
+      { label: 'Web Dev Agency', href: '/website-development-agency-in-karachi' }
+    ]
+  }
 ];
 
 export const heroContent = {

@@ -34,9 +34,23 @@ export function TopNav() {
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium transition-colors duration-300">
           {navLinks.map((link) => (
-            <a key={link.label} href={link.href} className={cn("hover:text-[#cc785c] transition-colors", scrolled ? "text-[#141413]" : "text-[#faf9f5]")}>
-              {link.label}
-            </a>
+            <div key={link.label} className="group relative">
+              <a href={link.href} className={cn("hover:text-[#cc785c] transition-colors py-2 flex items-center gap-1", scrolled ? "text-[#141413]" : "text-[#faf9f5]")}>
+                {link.label}
+                {link.children && (
+                  <svg className="w-3 h-3 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                )}
+              </a>
+              {link.children && (
+                <div className="absolute top-full left-0 mt-2 w-56 bg-white border border-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 flex flex-col p-2">
+                  {link.children.map(child => (
+                    <a key={child.label} href={child.href} className="px-3 py-2 text-sm text-gray-700 hover:text-[#cc785c] hover:bg-gray-50 rounded-sm transition-colors">
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
           <a 
             href={globalConstants.whatsappUrl} 
@@ -88,9 +102,20 @@ export function TopNav() {
             </button>
             <nav className="flex flex-col items-center gap-8 text-2xl font-display text-[#faf9f5]">
               {navLinks.map((link) => (
-                <a key={link.label} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#cc785c] transition-colors">
-                  {link.label}
-                </a>
+                <div key={link.label} className="flex flex-col items-center">
+                  <a href={link.href} onClick={() => !link.children && setIsMobileMenuOpen(false)} className="hover:text-[#cc785c] transition-colors flex items-center gap-2">
+                    {link.label}
+                  </a>
+                  {link.children && (
+                    <div className="flex flex-col items-center gap-4 mt-4 text-lg text-[#faf9f5]/70">
+                      {link.children.map(child => (
+                        <a key={child.label} href={child.href} onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#cc785c] transition-colors">
+                          {child.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               <a href={globalConstants.whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-primary mt-4 text-[16px] font-body flex items-center gap-2">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">

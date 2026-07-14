@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { navLinks } from '../data/constants';
 
 export function ContactFooter() {
   const marqueeRef = useRef<HTMLDivElement>(null);
@@ -61,7 +62,19 @@ export function ContactFooter() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-8 sm:gap-16">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-8 sm:gap-12 md:gap-16">
+            <div className="flex flex-col gap-3">
+              <h4 className="text-on-dark text-[12px] uppercase tracking-widest font-semibold mb-2">Services</h4>
+              {navLinks.find(n => n.label === 'Specialties')?.children?.map(link => (
+                <a key={link.label} href={link.href} className="text-on-dark-soft hover:text-on-dark transition-colors text-[14px]">{link.label}</a>
+              ))}
+            </div>
+            <div className="flex flex-col gap-3">
+              <h4 className="text-on-dark text-[12px] uppercase tracking-widest font-semibold mb-2">Locations</h4>
+              {navLinks.find(n => n.label === 'Top Locations')?.children?.map(link => (
+                <a key={link.label} href={link.href} className="text-on-dark-soft hover:text-on-dark transition-colors text-[14px]">{link.label}</a>
+              ))}
+            </div>
             <div className="flex flex-col gap-3">
               <h4 className="text-on-dark text-[12px] uppercase tracking-widest font-semibold mb-2">Socials</h4>
               <a href="https://www.facebook.com/seoustaad/" target="_blank" rel="noopener noreferrer" className="text-on-dark-soft hover:text-on-dark transition-colors text-[14px]">Facebook</a>
@@ -72,7 +85,6 @@ export function ContactFooter() {
               <h4 className="text-on-dark text-[12px] uppercase tracking-widest font-semibold mb-2">Contact</h4>
               <a href="mailto:support@seoustaad.com" className="text-on-dark-soft hover:text-on-dark transition-colors text-[14px]">support@seoustaad.com</a>
               <a href="https://wa.me/923379912300" target="_blank" rel="noopener noreferrer" className="text-on-dark-soft hover:text-on-dark transition-colors text-[14px]">+92 337 9912300</a>
-              <span className="text-on-dark-soft text-[14px]">Pakistan (Karachi / Lahore / Islamabad)</span>
             </div>
           </div>
 
