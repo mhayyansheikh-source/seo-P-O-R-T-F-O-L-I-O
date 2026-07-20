@@ -29,7 +29,7 @@ export const navLinks = [
 
 export const heroContent = {
   title: 'Dominate Digital Search\\nWith SEO Ustaad.',
-  description: "Premium Web Development, ROI-Driven SEO, and Meta Ads specialized for the Pakistani market. We don't just build sites; we build search authority.",
+  description: "Premium Web Development / Mobile App Development,   ROI-Driven SEO, and Meta Ads specialized for the Pakistani market. We don't just build sites; we build search authority.",
   primaryAction: { label: 'Explore Services', href: '#services' },
   secondaryAction: { label: 'Featured works', href: '#work' }
 };

@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Image } from './Image';
 
-type Category = 'All' | 'E-Commerce & Brands' | 'Healthcare & Clinics' | 'Corporate & B2B Services' | 'Lifestyle & Hospitality';
+type Category = 'All' | 'E-Commerce & Brands' | 'Healthcare & Clinics' | 'Corporate & B2B Services' | 'Lifestyle & Hospitality' | 'Mobile Apps';
 
 const PROJECTS = [
   // E-Commerce & Brands
@@ -33,9 +33,12 @@ const PROJECTS = [
   { name: 'La Pasha Lounge', url: 'https://lapashalounge.vercel.app/', category: 'Lifestyle & Hospitality', image: '/images/projects/la-pasha-lounge.jpg', desc: 'Premium dining and lounge experience' },
   { name: 'Uzma Shadi', url: 'https://uzmashadi-com.vercel.app/', category: 'Lifestyle & Hospitality', image: '/images/projects/uzma-shadi.jpg', desc: 'Wedding and event planning' },
   { name: 'Cap Coral', url: 'https://cap-coral.vercel.app/', category: 'Lifestyle & Hospitality', image: '/images/projects/cap-coral.jpg', desc: 'Coastal lifestyle destination' },
+
+  // Mobile Apps
+  { name: 'Mobile App Showcase', url: 'https://appetize.io/embed/b_7gebesauxqdpahonsxiwu3l7fa', category: 'Mobile Apps', image: '', embedUrl: 'https://appetize.io/embed/b_7gebesauxqdpahonsxiwu3l7fa', desc: 'Flutter/React Mobile app development' },
 ];
 
-const CATEGORIES: Category[] = ['All', 'E-Commerce & Brands', 'Healthcare & Clinics', 'Corporate & B2B Services', 'Lifestyle & Hospitality'];
+const CATEGORIES: Category[] = ['All', 'E-Commerce & Brands', 'Healthcare & Clinics', 'Corporate & B2B Services', 'Lifestyle & Hospitality', 'Mobile Apps'];
 
 function ProjectCard({ project, index }: { project: any, index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -67,12 +70,21 @@ function ProjectCard({ project, index }: { project: any, index: number }) {
       className={`${cardClass} flex flex-col gap-6 ${isEvenColumn ? 'md:mt-32' : 'md:mt-0'}`}
     >
       <div className="relative w-full aspect-[16/10] overflow-hidden rounded-sm border border-hairline/20 bg-surface-dark-elevated">
-        <Image 
-          src={project.image} 
-          alt={project.name} 
-          containerClassName="w-full h-full absolute inset-0"
-          className="w-full h-full object-cover"
-        />
+        {project.embedUrl ? (
+          <iframe 
+            src={project.embedUrl} 
+            className="w-full h-full border-none"
+            title={project.name}
+            scrolling="no"
+          />
+        ) : (
+          <Image 
+            src={project.image} 
+            alt={project.name} 
+            containerClassName="w-full h-full absolute inset-0"
+            className="w-full h-full object-cover"
+          />
+        )}
       </div>
       
       <div>
