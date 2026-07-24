@@ -35,6 +35,7 @@ const PROJECTS = [
   { name: 'Uzma Shadi', url: 'https://uzmashadi-com.vercel.app/', category: 'Lifestyle & Hospitality', image: '/images/projects/uzma-shadi.jpg', desc: 'Wedding and event planning' },
   { name: 'Cap Coral', url: 'https://cap-coral.vercel.app/', category: 'Lifestyle & Hospitality', image: '/images/projects/cap-coral.jpg', desc: 'Coastal lifestyle destination' },
   { name: 'The Back Nine Golf', url: 'https://the-back-nine-golf-website.pages.dev/', category: 'Lifestyle & Hospitality', image: '/images/projects/the-back-nine-golf.png', desc: 'Premier Golf Club experience' },
+  { name: 'Super Cars Animated', url: 'https://super-cars-animated.pages.dev/', category: 'Lifestyle & Hospitality', image: '/images/projects/super-cars-animated.jpg', desc: 'Interactive animated luxury car showcase' },
 ];
 
 const CATEGORIES: Category[] = ['All', 'E-Commerce & Brands', 'Healthcare & Clinics', 'Corporate & B2B Services', 'Lifestyle & Hospitality'];
